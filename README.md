@@ -1,4 +1,4 @@
-# foggly
+# foggly ![](https://travis-ci.org/fogglyorg/foggly.svg?branch=master)
 
 
 ## Developer Setup
