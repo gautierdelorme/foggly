@@ -32,7 +32,6 @@
 #### Install and start Postgres
 
     apt-get -y install postgresql postgresql-contrib libpq-dev
-    # need to add instructions to start postgres on Linux
 
 #### Install rbenv
 
@@ -48,6 +47,7 @@
 
 #### Go to the project directory
 
+    git clone git@github.com:fogglyorg/foggly.git
     cd foggly
 
 #### Install the required version of Ruby
@@ -63,6 +63,7 @@
 #### Install required gems
 
     bundle install
+    rbenv rehash
 
 #### Initial setup and start
 
