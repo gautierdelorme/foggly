@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'haml', '~> 5.0'
 gem 'haml-rails', '~> 1.0'
+gem 'bootstrap', '~> 4.0.0.beta2.1'
+gem 'jquery-rails', '~> 4.3'
 
 
 group :development, :test do
