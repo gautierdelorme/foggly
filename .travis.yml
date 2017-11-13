@@ -1,4 +1,8 @@
 language: ruby
+services:
+  - postgresql
 script:
   - bundle exec rubocop
   - bundle exec rails test
+before_script:
+  - psql -c 'create database foggly_test;' -U postgres
