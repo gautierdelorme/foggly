@@ -24,9 +24,9 @@ Metrics/ModuleLength:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-Style/BlockDelimiters:
+Metrics/LineLength:
   Exclude:
-    - 'spec/**/*'
+    - 'config/**/*'
 
 Rails:
   Enabled: true

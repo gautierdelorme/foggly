@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -32,7 +32,9 @@ gem 'haml', '~> 5.0'
 gem 'haml-rails', '~> 1.0'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'jquery-rails', '~> 4.3'
-
+gem 'devise', '~> 4.3'
+gem 'dotenv-rails', '~> 2.1'
+gem 'pry-rails', '~> 0.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

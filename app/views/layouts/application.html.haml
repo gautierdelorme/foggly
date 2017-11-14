@@ -7,4 +7,26 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   %body
-    = yield
+    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      = link_to t(:app_name), root_path, class: 'navbar-brand'
+      %button.navbar-toggler{ type: 'button', 'data-toggle' => 'collapse', 'data-target' => '#navbarContent', 'aria-expanded' => 'false', 'aria-label' => 'Toggle navigation'}
+        %span.navbar-toggler-icon
+      .collapse.navbar-collapse#navbarContent
+        %ul.navbar-nav.mr-auto
+          -# add menu nav links here
+        - if user_signed_in?
+          %ul.navbar-nav
+            %li.nav-item
+              = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link'
+
+    .container
+      .flash
+        .alert.alert-success{:class => ('collapse' unless flash[:notice]) }
+          != flash[:notice]
+        .alert.alert-danger{:class => ('collapse' unless flash[:error]) }
+          != flash[:error]
+        .alert.alert-warning{:class => ('collapse' unless flash[:alert]) }
+          != flash[:alert]
+        .alert.alert-info{:class => ('collapse' unless flash[:info]) }
+          != flash[:info]
+      = yield
