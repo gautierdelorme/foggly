@@ -9,12 +9,21 @@
   %body
     %nav.navbar.navbar-expand-lg.navbar-light.bg-light
       = link_to t(:app_name), root_path, class: 'navbar-brand'
-      %button.navbar-toggler{ type: 'button', 'data-toggle' => 'collapse', 'data-target' => '#navbarContent', 'aria-expanded' => 'false', 'aria-label' => 'Toggle navigation'}
-        %span.navbar-toggler-icon
-      .collapse.navbar-collapse#navbarContent
-        %ul.navbar-nav.mr-auto
-          -# add menu nav links here
-        - if user_signed_in?
+      - if user_signed_in?
+        %button.navbar-toggler{type: 'button', 'data-toggle' => 'collapse', 'data-target' => '#navbarContent'}
+          %span.navbar-toggler-icon
+        .collapse.navbar-collapse#navbarContent
+          %ul.navbar-nav.mr-auto
+            %li.nav-item.active
+              = link_to conversations_path, class: 'nav-link' do
+                Mailbox
+                - if Message.unread_by(current_user).length > 0
+                  %span.badge.badge-danger
+                    = Message.unread_by(current_user).count
+          = search_form_for @q, class: 'form-inline my-2 my-lg-0' do |f|
+            .input-group
+              = f.text_field :name_cont, class: 'form-control', placeholder: 'Search', type: 'search'
+              %button.input-group-addon= fa_icon :search
           %ul.navbar-nav
             %li.nav-item
               = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link'

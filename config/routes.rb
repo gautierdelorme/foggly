@@ -5,4 +5,10 @@ Rails.application.routes.draw do
   root to: redirect('/users/sign_in')
 
   devise_for :users
+
+  resources :conversations, only: %i[index show create] do
+    resources :messages, only: :create
+  end
+
+  resources :users, only: %i[index show]
 end

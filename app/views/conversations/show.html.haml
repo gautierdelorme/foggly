@@ -1,0 +1,16 @@
+%nav{role: 'navigation'}
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to 'Mailbox', conversations_path
+    %li.breadcrumb-item.active Conversation with #{@conversation.participant_not(current_user).name}
+
+- if @conversation.messages.length > 0
+  .scrollable
+    %table.table
+      %tbody
+        - @conversation.messages.each do |message|
+          %tr= render partial: 'messages/message', locals: { message: message }
+- else
+  %p
+    Start Talking with #{@conversation.participant_not(current_user).name}
+
+= render 'messages/form'

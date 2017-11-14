@@ -1,0 +1,12 @@
+%nav{role: 'navigation'}
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to 'All users', users_path
+    %li.breadcrumb-item.active #{@user.name}'s profile
+
+%h1.display-5
+  = @user.name
+  = link_to conversations_path(conversation: { participant_id: @user.id }), method: :post do
+    = fa_icon 'envelope-o'
+
+%p
+  Member since #{time_ago_in_words @user.created_at}.

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: alice
+  participant: bob
+
+two:
+  user: bob
+  participant: bob
+
+three:
+  user: mike
+  participant: alice

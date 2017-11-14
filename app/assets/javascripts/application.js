@@ -15,3 +15,9 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(function(){
+    var scrollable = $(".scrollable")
+    if (scrollable.length > 0)
+      scrollable.scrollTop(scrollable[0].scrollHeight);
+});
