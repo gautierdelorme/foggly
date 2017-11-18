@@ -1,3 +1,4 @@
+ActionMailer::Base.default_url_options = { host: ENV['FOGGLY_HOST'] }
 ActionMailer::Base.delivery_method = :smtp
 # SMTP settings for gmail
 ActionMailer::Base.smtp_settings = {

@@ -117,7 +117,9 @@
 
 ## Deployment instructions
 
-TODO...
+Continuous Delivery based on Github Webhooks (push to master) and heroku.
+
+Test the app: https://foggly.herokuapp.com
 
 ## License
 
