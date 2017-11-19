@@ -12,3 +12,31 @@
  */
 
 @import "bootstrap";
+@import "font-awesome";
+
+.display-5 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.container {
+  margin-top: 10px;
+}
+
+td.td-link {
+  padding: 0px;
+}
+
+td.td-link > a {
+  color: $dark;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.scrollable {
+  max-height: 400px;
+  overflow-y: scroll;
+}

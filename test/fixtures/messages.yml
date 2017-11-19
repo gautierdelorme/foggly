@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: alice
+  conversation: one
+  body: HelloBob
+  read: false
+
+two:
+  user: bob
+  conversation: one
+  body: HelloAlice
+  read: false
+
+three:
+  user: bob
+  conversation: two
+  body: HelloMyself
+  read: false

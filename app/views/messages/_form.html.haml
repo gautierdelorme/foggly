@@ -1,0 +1,11 @@
+= form_for [@conversation, @message] do |f|
+  - if @message.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@message.errors.count, "error")} prohibited this message from being saved:"
+      %ul
+        - @message.errors.full_messages.each do |message|
+          %li= message
+
+  .input-group
+    = f.text_field :body, class: 'form-control form-control-lg', autofocus: true
+    = f.submit 'Send', class: 'input-group-addon'

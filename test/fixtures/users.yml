@@ -6,3 +6,12 @@
 #
 alice:
   email: test@alice.com
+  name: alice
+
+bob:
+  email: test@bob.com
+  name: bob
+
+mike:
+  email: test@mike.com
+  name: mike

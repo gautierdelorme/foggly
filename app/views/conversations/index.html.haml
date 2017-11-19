@@ -1,0 +1,20 @@
+%h1.display-4 Mailbox
+
+- if @conversations.length > 0
+  %table.table.table-striped
+    %tbody
+      - @conversations.each do |conversation|
+        %tr
+          %td.td-link{width: 10}
+            = link_to conversation do
+              - if conversation.messages.unread_by(current_user).length > 0
+                %span.badge.badge-danger
+                  = conversation.messages.unread_by(current_user).count
+          %td.td-link
+            = link_to conversation do
+              = conversation.participant_not(current_user).name
+          %td.td-link{width: 200}
+            = link_to conversation do
+              = time_ago_in_words conversation.updated_at
+- else
+  You don't have any discussions...
