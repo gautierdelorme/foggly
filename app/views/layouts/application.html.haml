@@ -25,9 +25,12 @@
               = f.text_field :name_cont, class: 'form-control', placeholder: 'Search', type: 'search'
               %button.input-group-addon= fa_icon :search
           %ul.navbar-nav
-            %li.nav-item
-              = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link'
-
+            %li.nav-item.dropdown
+              = link_to current_user.name, '#', class: 'nav-link dropdown-toggle', data: {toggle: 'dropdown'}
+              .dropdown-menu.dropdown-menu-right.text-center
+                = link_to 'Profile', edit_user_registration_path, class: 'dropdown-item'
+                .dropdown-divider
+                = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item'
     .container
       .flash
         .alert.alert-success{:class => ('collapse' unless flash[:notice]) }
