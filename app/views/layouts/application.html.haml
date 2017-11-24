@@ -20,6 +20,10 @@
                 - if Message.unread_by(current_user).length > 0
                   %span.badge.badge-danger
                     = Message.unread_by(current_user).count
+            %li.nav-item.active
+              = link_to 'Users', users_path, class: 'nav-link'
+            %li.nav-item.active
+              = link_to 'Groups', user_groups_path, class: 'nav-link'
           = search_form_for @q, class: 'form-inline my-2 my-lg-0' do |f|
             .input-group
               = f.text_field :name_cont, class: 'form-control', placeholder: 'Search', type: 'search'

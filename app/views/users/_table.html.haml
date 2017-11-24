@@ -1,0 +1,6 @@
+%table.table.table-striped
+  %tbody
+    - users.each do |user|
+      %tr
+        %td.td-link{width: 10}
+          = link_to user.name, user

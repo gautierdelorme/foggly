@@ -11,4 +11,8 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %i[index show]
+
+  resources :user_groups, except: :destroy do
+    resources :memberships, only: %i[create destroy]
+  end
 end

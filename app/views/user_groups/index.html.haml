@@ -1,0 +1,9 @@
+%h1.display-4
+  Groups
+  = link_to new_user_group_path, class: 'btn btn-light' do
+    = fa_icon 'plus', text: 'New'
+
+- if @user_groups.length > 0
+  = render partial: 'table', locals: {user_groups: @user_groups}
+- else
+  No groups found...

@@ -1,0 +1,14 @@
+= form_for @user_group do |f|
+  - if @user_group.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user_group.errors.count, "error")} prohibited this user_group from being saved:"
+      %ul
+        - @user_group.errors.full_messages.each do |message|
+          %li= message
+
+  .form-group
+    = f.text_field :name, class: 'form-control form-control-lg', placeholder: 'Name'
+  .form-group
+    = f.text_area :description, class: 'form-control form-control-lg', placeholder: 'Description'
+  .form-group
+    = f.submit 'Save', class: 'btn btn-light'
