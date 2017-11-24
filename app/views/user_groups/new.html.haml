@@ -1,0 +1,9 @@
+%nav{role: 'navigation'}
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to 'All groups', user_groups_path
+    %li.breadcrumb-item.active New
+
+%h1.display-5
+  New Group
+
+= render 'form'

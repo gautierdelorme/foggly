@@ -1,0 +1,23 @@
+%nav{role: 'navigation'}
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to 'All groups', user_groups_path
+    %li.breadcrumb-item.active #{@user_group.name}
+
+%h1.display-5
+  = @user_group.name
+  - if @membership
+    = link_to edit_user_group_path(@user_group), class: 'btn btn-light' do
+      = fa_icon 'pencil', text: 'Edit'
+    = link_to user_group_membership_path(@user_group, @membership), method: :delete, class: 'btn btn-light' do
+      = fa_icon 'times', text: 'Leave'
+  - else
+    = link_to user_group_memberships_path(@user_group), method: :post, class: 'btn btn-light' do
+      = fa_icon 'plus', text: 'Join'
+
+%p
+  Created #{time_ago_in_words @user_group.created_at} ago.
+
+%p= @user_group.description
+
+%h1.display-6 Users
+= render partial: 'users/table', locals: {users: @user_group.users}

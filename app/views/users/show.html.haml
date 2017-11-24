@@ -10,3 +10,6 @@
 
 %p
   Member since #{time_ago_in_words @user.created_at}.
+
+%h1.display-6 Groups
+= render partial: 'user_groups/table', locals: {user_groups: @user.user_groups}

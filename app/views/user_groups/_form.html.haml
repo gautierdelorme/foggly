@@ -1,0 +1,32 @@
+= form_for @user_group do |f|
+  - if @user_group.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user_group.errors.count, "error")} prohibited this user_group from being saved:"
+      %ul
+        - @user_group.errors.full_messages.each do |message|
+          %li= message
+
+  .form-group
+    = f.text_field :name, class: 'form-control form-control-lg', placeholder: 'Name'
+  .form-group
+    = f.text_area :description, class: 'form-control form-control-lg', placeholder: 'Description'
+  .form-group
+    = f.submit 'Save', class: 'btn btn-light'
+
+-# %h1.display-4
+-#   = link_to 'Log in', new_session_path(resource_name)
+-#   \/ Sign up
+-# = form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
+-#   = devise_error_messages!
+-#   .form-group
+-#     = f.text_field :name, autofocus: true, class: 'form-control form-control-lg', placeholder: 'Name'
+-#   .form-group
+-#     = f.email_field :email, class: 'form-control form-control-lg', placeholder: 'Email'
+-#   .form-group
+-#     = f.password_field :password, autocomplete: 'off', class: 'form-control form-control-lg', placeholder: 'Password'
+-#     - if @minimum_password_length
+-#       %small.form-text.text-muted #{@minimum_password_length} characters minimum
+-#   .form-group
+-#     = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control form-control-lg', placeholder: 'Confirm password'
+-#   .form-group
+-#     = f.submit 'Sign up', class: 'btn btn-light'
