@@ -1,13 +1,13 @@
 class ConversationsController < ApplicationController
+  before_action :set_conversation, only: :show
+
   def index
-    @conversations = current_user.conversations.order updated_at: :desc
-    @conversation = @conversations.new
+    @conversations = policy_scope(Conversation).order updated_at: :desc
   end
 
   def show
-    @conversation = Conversation.find(params[:id]).tap do |conversation|
-      conversation.messages.unread_by(current_user).update(read: true)
-    end
+    authorize @conversation
+    @conversation.messages.unread_by(current_user).update(read: true)
     @message = Message.new
   end
 
@@ -23,6 +23,10 @@ class ConversationsController < ApplicationController
   end
 
   private
+
+  def set_conversation
+    @conversation = Conversation.find(params[:id])
+  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def conversation_params
