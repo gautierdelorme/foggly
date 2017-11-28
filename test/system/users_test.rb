@@ -16,6 +16,6 @@ class UsersTest < ApplicationSystemTestCase
 
   test 'visiting a user page' do
     visit user_url @user
-    assert_selector 'h1', text: @user.name
+    assert_selector 'h1', text: @user.name.titleize
   end
 end

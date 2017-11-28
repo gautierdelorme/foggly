@@ -4,4 +4,6 @@ class UserGroup < ApplicationRecord
   belongs_to :user
 
   validates :user, :name, :description, presence: true
+
+  scope :by_name, -> { order('lower(name)') }
 end

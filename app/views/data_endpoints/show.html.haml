@@ -1,0 +1,25 @@
+%nav{role: 'navigation'}
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to t(:index, scope: :data_source), data_sources_path
+    %li.breadcrumb-item= link_to @data_source.name.titleize, @data_source
+    %li.breadcrumb-item= link_to t(:index, scope: :data_endpoint), data_source_data_endpoints_path(@data_source)
+    %li.breadcrumb-item.active= @data_endpoint.name.titleize
+
+%h1.display-5= @data_source.name.titleize
+
+.mb-3
+
+%h1.display-6= @data_endpoint.name.titleize
+
+.mb-3
+
+.nav.nav-tabs
+  %li.nav-item
+    %span.nav-link.active= t(:show, scope: :data_endpoint)
+  - if policy(@data_source).update?
+    %li.nav-item
+      = link_to t(:edit, scope: :data_endpoint), edit_data_source_data_endpoint_path(@data_source, @data_endpoint), class: 'nav-link'
+
+.mb-3
+
+= render_markdown @data_endpoint.description

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: data_source_name_one
+  description: data_source_description_one
+  base_url: data_source_base_url_one
+  user: alice
+
+two:
+  name: data_source_name_two
+  description: data_source_description_two
+  base_url: data_source_base_url_two
+  user: bob

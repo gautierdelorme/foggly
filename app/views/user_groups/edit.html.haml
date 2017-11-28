@@ -1,10 +1,40 @@
 %nav{role: 'navigation'}
   %ol.breadcrumb
-    %li.breadcrumb-item= link_to 'All groups', user_groups_path
-    %li.breadcrumb-item= link_to @user_group.name, @user_group
-    %li.breadcrumb-item.active Edit
+    %li.breadcrumb-item= link_to t(:index, scope: :user_group), user_groups_path
+    %li.breadcrumb-item= link_to @user_group.name.titleize, @user_group
+    %li.breadcrumb-item.active= t(:edit, scope: :user_group)
 
-%h1.display-5
-  Edit #{@user_group.name}
+.row
+  .col
+    %h1.display-5= @user_group.name.titleize
+  .col-md-auto
+    .mt-2
+    - if @membership
+      = link_to 'Leave', user_group_membership_path(@user_group, @membership), method: :delete, remote: true, class: 'btn btn btn-outline-danger'
+    - else
+      = link_to 'Join', user_group_memberships_path(@user_group), method: :post, remote: true, class: 'btn btn btn-outline-success'
+
+.nav.nav-tabs
+  %li.nav-item
+    = link_to t(:show, scope: :user_group), @user_group, class: 'nav-link'
+  %li.nav-item
+    = link_to t(:index, scope: :user), user_group_memberships_path(@user_group), class: 'nav-link'
+  %li.nav-item
+    %span.nav-link.active= t(:edit, scope: :user_group)
+
+.mb-3
 
 = render 'form'
+
+.mb-5
+
+%h1.card-title.display-6.text-danger Danger Zone
+.card.border-danger
+  .card-body
+    %p.card-text
+      .row
+        .col
+          %h6 Delete this group
+          Once you delete a group, there is no going back. Please be certain.
+        .col-md-auto
+          = link_to 'Delete this group', @user_group, data: { confirm: "Are you sure?" }, method: :delete, remote: true, class: 'btn btn-light text-danger'

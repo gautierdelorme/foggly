@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: data_endpoint_name_one
+  description: data_endpoint_description_one
+  method: GET
+  path: data_endpoint_path_one
+  data_source: one
+  user: alice
+
+two:
+  name: data_endpoint_name_two
+  description: data_endpoint_description_two
+  method: POST
+  path: data_endpoint_path_two
+  data_source: two
+  user: bob

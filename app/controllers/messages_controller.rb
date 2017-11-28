@@ -5,9 +5,9 @@ class MessagesController < ApplicationController
 
     if @message.save
       UserMailer.inbox_email(@conversation.participant_not(current_user), current_user, @message.body).deliver_later
-      redirect_to @conversation
+      redirect_back fallback_location: @conversation, notice: 'Your message has been sent.'
     else
-      redirect_to @conversation, flash: { error: 'Message was not sent.' }
+      redirect_back fallback_location: @conversation, flash: { error: 'Message was not sent.' }
     end
   end
 

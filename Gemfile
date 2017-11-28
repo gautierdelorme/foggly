@@ -38,6 +38,8 @@ gem 'pry-rails', '~> 0.3'
 gem 'ransack', '~> 1.8'
 gem 'font-awesome-rails', '~> 4.7'
 gem 'pundit', '~> 1.1'
+gem 'redcarpet', '~> 3.4'
+gem 'turbolinks', '~> 5.0.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

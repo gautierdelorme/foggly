@@ -1,0 +1,32 @@
+%nav{role: 'navigation'}
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to t(:index, scope: :data_source), data_sources_path
+    %li.breadcrumb-item= link_to @data_source.name.titleize, @data_source
+    %li.breadcrumb-item.active= t(:index, scope: :data_endpoint)
+
+%h1.display-5
+  = @data_source.name.titleize
+
+.nav.nav-tabs
+  %li.nav-item
+    = link_to t(:show, scope: :data_source), @data_source, class: 'nav-link'
+  %li.nav-item
+    %span.nav-link.active= t(:index, scope: :data_endpoint)
+  - if policy(@data_source).update?
+    %li.nav-item
+      = link_to t(:edit, scope: :data_source), edit_data_source_path(@data_source), class: 'nav-link'
+
+.mb-3
+
+- if policy(@data_source).update?
+  .row
+    .col
+    .col-md-auto
+      = link_to t(:new, scope: :data_endpoint), new_data_source_data_endpoint_path(@data_source), class: 'btn btn-outline-success'
+
+.mb-3
+
+- if @data_endpoints.length > 0
+  = render partial: 'table', locals: {data_endpoints: @data_endpoints}
+- else
+  No data endpoints found...

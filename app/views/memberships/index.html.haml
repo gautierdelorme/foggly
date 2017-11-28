@@ -1,0 +1,31 @@
+%nav{role: 'navigation'}
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to t(:index, scope: :user_group), user_groups_path
+    %li.breadcrumb-item= link_to @user_group.name.titleize, @user_group
+    %li.breadcrumb-item.active= t(:index, scope: :user)
+
+.row
+  .col
+    %h1.display-5= @user_group.name.titleize
+  .col-md-auto
+    .mt-2
+    - if @membership
+      = link_to 'Leave', user_group_membership_path(@user_group, @membership), method: :delete, remote: true, class: 'btn btn btn-outline-danger'
+    - else
+      = link_to 'Join', user_group_memberships_path(@user_group), method: :post, remote: true, class: 'btn btn btn-outline-success'
+
+.nav.nav-tabs
+  %li.nav-item
+    = link_to t(:show, scope: :user_group), @user_group, class: 'nav-link'
+  %li.nav-item
+    %span.nav-link.active= t(:index, scope: :user)
+  - if policy(@user_group).update?
+    %li.nav-item
+      = link_to t(:edit, scope: :user_group), edit_user_group_path(@user_group), class: 'nav-link'
+
+.mb-3
+
+- if @users.length > 0
+  = render partial: 'users/table', locals: {users: @users}
+- else
+  No users found...

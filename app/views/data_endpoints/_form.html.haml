@@ -1,0 +1,24 @@
+= form_with model: [@data_source, @data_endpoint] do |f|
+  - if @data_endpoint.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@data_endpoint.errors.count, "error")} prohibited this data_endpoint from being saved:"
+      %ul
+        - @data_endpoint.errors.full_messages.each do |message|
+          %li= message
+
+  .form-group
+    = f.text_field :name, autofocus: true, class: 'form-control form-control-lg', placeholder: 'Name'
+  .form-group
+    = f.text_area :description, rows: 15, class: 'form-control form-control-lg', placeholder: 'Description'
+    %small.form-text.text-muted You can write Markdown in the description.
+  .form-group
+    .row
+      .col-md-auto
+        = f.select :method, DataEndpoint::METHOD_TYPES, {}, class: 'form-control form-control-lg'
+      .col
+        .input-group
+          - if @data_source.base_url.present?
+            %span.input-group-addon= @data_source.base_url
+          = f.text_field :path, class: 'form-control form-control-lg', placeholder: 'Path'
+  .form-group
+    = f.submit 'Save', class: 'btn btn-lg btn-light'

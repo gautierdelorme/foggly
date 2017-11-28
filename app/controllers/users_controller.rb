@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = @q.result
+    @users = User.by_name
   end
 
   def show

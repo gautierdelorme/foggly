@@ -36,3 +36,20 @@ en:
       default: ! '%m/%d/%y %H:%M'
       short: ! '%m/%d/%y'
       detailed: ! '%m/%d/%y %H:%M:%S'
+  data_source:
+    index: 'Data Sources'
+    new: 'New Data Source'
+    show: 'Overview'
+    edit: 'Settings'
+  data_endpoint:
+    index: 'Endpoints'
+    new: 'New Endpoint'
+    show: 'Overview'
+    edit: 'Settings'
+  user_group:
+    index: 'Groups'
+    new: 'New Group'
+    show: 'Overview'
+    edit: 'Settings'
+  user:
+    index: 'Users'
