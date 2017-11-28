@@ -2,10 +2,11 @@ class UserGroupsController < ApplicationController
   before_action :set_user_group, only: %i[show edit update]
 
   def index
-    @user_groups = UserGroup.all
+    @user_groups = policy_scope(UserGroup).all
   end
 
   def show
+    authorize @user_group
     @membership = @user_group.memberships.find_by(user_id: current_user.id)
   end
 
@@ -24,7 +25,12 @@ class UserGroupsController < ApplicationController
     end
   end
 
+  def edit
+    authorize @user_group
+  end
+
   def update
+    authorize @user_group
     if @user_group.update(user_group_params)
       redirect_to @user_group, notice: 'User group was successfully updated.'
     else
@@ -39,6 +45,6 @@ class UserGroupsController < ApplicationController
   end
 
   def user_group_params
-    params.require(:user_group).permit(:name, :description)
+    params.require(:user_group).permit(:name, :description).merge(user_id: current_user.id)
   end
 end
