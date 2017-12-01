@@ -10,7 +10,13 @@
 
 .mb-3
 
-%h1.display-6= @data_endpoint.name.titleize
+.row
+  .col
+    %h1.display-6= @data_endpoint.name.titleize
+  .col-md-auto
+    .mt-2
+    %span.font-weight-bold.border.border-dark.rounded.p-1.m-1= @data_endpoint.method
+    %span.text-muted #{@data_endpoint.data_source.base_url}#{@data_endpoint.path}
 
 .mb-3
 
