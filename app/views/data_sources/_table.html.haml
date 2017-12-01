@@ -1,0 +1,5 @@
+%table.table.table-striped
+  %tbody
+    - data_sources.each do |data_source|
+      %tr
+        %td= link_to data_source.name.titleize, data_source

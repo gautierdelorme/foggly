@@ -16,9 +16,15 @@
     = f.password_field :current_password, autocomplete: 'off', class: 'form-control form-control-lg', placeholder: 'Current password'
     %small.form-text.text-muted We need your current password to confirm your changes.
   .form-group
-    = f.submit 'Update', class: 'btn btn-light'
+    = f.submit 'Update', class: 'btn btn-lg btn-light'
 
-%h1.display-5.text-danger Danger Zone
-%p
-  Unhappy?
-  = link_to 'Delete my account', registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
+%h1.card-title.display-6.text-danger Danger Zone
+.card.border-danger
+  .card-body
+    %p.card-text
+      .row
+        .col
+          %h6 Delete this account
+          Once you delete a account, there is no going back. Please be certain.
+        .col-md-auto
+          = link_to 'Delete this account', registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-light text-danger'

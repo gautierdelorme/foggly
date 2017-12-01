@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127163703) do
+ActiveRecord::Schema.define(version: 20171129122632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,34 @@ ActiveRecord::Schema.define(version: 20171127163703) do
     t.index ["participant_id"], name: "index_conversations_on_participant_id"
     t.index ["user_id", "participant_id"], name: "index_conversations_on_user_id_and_participant_id", unique: true
     t.index ["user_id"], name: "index_conversations_on_user_id"
+  end
+
+  create_table "data_endpoints", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.string "method", null: false
+    t.string "path", null: false
+    t.bigint "data_source_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["data_source_id"], name: "index_data_endpoints_on_data_source_id"
+    t.index ["description"], name: "index_data_endpoints_on_description"
+    t.index ["name"], name: "index_data_endpoints_on_name"
+    t.index ["user_id"], name: "index_data_endpoints_on_user_id"
+  end
+
+  create_table "data_sources", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.string "base_url", default: ""
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["base_url"], name: "index_data_sources_on_base_url"
+    t.index ["description"], name: "index_data_sources_on_description"
+    t.index ["name"], name: "index_data_sources_on_name"
+    t.index ["user_id"], name: "index_data_sources_on_user_id"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -74,6 +102,9 @@ ActiveRecord::Schema.define(version: 20171127163703) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "data_endpoints", "data_sources"
+  add_foreign_key "data_endpoints", "users"
+  add_foreign_key "data_sources", "users"
   add_foreign_key "memberships", "user_groups"
   add_foreign_key "memberships", "users"
   add_foreign_key "messages", "conversations"

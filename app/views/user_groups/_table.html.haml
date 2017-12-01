@@ -2,5 +2,4 @@
   %tbody
     - user_groups.each do |user_group|
       %tr
-        %td.td-link{width: 10}
-          = link_to user_group.name, user_group
+        %td= link_to user_group.name.titleize, user_group

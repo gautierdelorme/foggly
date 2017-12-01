@@ -14,7 +14,7 @@ class ConversationsTest < ApplicationSystemTestCase
 
   test 'visiting a conversation page' do
     visit conversation_url conversations('one')
-    assert_selector 'table'
+    assert_selector 'p'
     assert_selector '.form-control.form-control-lg'
   end
 end

@@ -1,9 +1,10 @@
-%td
-  %p
+%hr.mb-3
+.row
+  .col
     - if message.user != current_user
       = link_to message.user_name, message.user
     - else
       %span.text-muted= message.user_name
-    \:
-    = message.body
-%td.text-muted{width: 150}= l message.created_at
+  .col-md-auto
+    %span.text-muted= l message.created_at
+%p= simple_format message.body

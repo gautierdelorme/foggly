@@ -1,9 +1,8 @@
 %nav{role: 'navigation'}
   %ol.breadcrumb
-    %li.breadcrumb-item= link_to 'All groups', user_groups_path
-    %li.breadcrumb-item.active New
+    %li.breadcrumb-item= link_to t(:index, scope: :user_group), user_groups_path
+    %li.breadcrumb-item.active= t(:new, scope: :user_group)
 
-%h1.display-5
-  New Group
+%h1.display-5= t(:new, scope: :user_group)
 
 = render 'form'

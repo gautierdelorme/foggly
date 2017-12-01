@@ -14,6 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_foggly_search
-    @q = User.ransack(params[:q])
+    @q = policy_scope(DataSource).ransack(params[:q])
   end
 end

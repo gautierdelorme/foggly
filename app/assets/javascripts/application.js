@@ -11,13 +11,26 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require turbolinks
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
 
-$(function(){
-    var scrollable = $(".scrollable")
-    if (scrollable.length > 0)
-      scrollable.scrollTop(scrollable[0].scrollHeight);
-});
+document.addEventListener('turbolinks:load', function() {
+  $(function(){
+      var scrollable = $(".scrollable")
+      if (scrollable.length > 0)
+        scrollable.scrollTop(scrollable[0].scrollHeight)
+  })
+})
+
+document.addEventListener('ajax:complete',function (event) {
+  var xhr = event.detail[0]
+  if ((xhr.getResponseHeader('Content-Type') || '').substring(0, 9) === 'text/html') {
+    var referrer = window.location.href
+    var snapshot = Turbolinks.Snapshot.wrap(xhr.response)
+    Turbolinks.controller.cache.put(referrer, snapshot)
+    Turbolinks.visit(referrer, { action: 'restore' })
+  }
+}, false)

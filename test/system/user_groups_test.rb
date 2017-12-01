@@ -16,12 +16,11 @@ class UserGroupsTest < ApplicationSystemTestCase
 
   test 'visiting a user group page' do
     visit user_group_url @user_group
-    assert_selector 'h1', text: @user_group.name
+    assert_selector 'h1', text: @user_group.name.titleize
   end
 
   test 'visiting a user group edit page' do
     visit edit_user_group_url @user_group
-    assert_selector 'h1', text: "Edit #{@user_group.name}"
     assert_selector 'form'
   end
 end

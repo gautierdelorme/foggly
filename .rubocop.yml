@@ -24,12 +24,18 @@ Metrics/ModuleLength:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Style/FormatStringToken:
+  EnforcedStyle: template
+
 Metrics/LineLength:
   Exclude:
     - 'config/**/*'
 
 Rails:
   Enabled: true
+
+Rails/OutputSafety:
+  Enabled: false
 
 AllCops:
   Exclude:

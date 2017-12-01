@@ -1,0 +1,33 @@
+%nav{role: 'navigation'}
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to t(:index, scope: :data_source), data_sources_path
+    %li.breadcrumb-item= link_to @data_source.name.titleize, @data_source
+    %li.breadcrumb-item.active= t(:edit, scope: :data_source)
+
+%h1.display-5
+  = @data_source.name.titleize
+
+.nav.nav-tabs
+  %li.nav-item
+    = link_to t(:show, scope: :data_source), @data_source, class: 'nav-link'
+  %li.nav-item
+    = link_to t(:index, scope: :data_endpoint), data_source_data_endpoints_path(@data_source), class: 'nav-link'
+  %li.nav-item
+    %span.nav-link.active= t(:edit, scope: :data_source)
+
+.mb-3
+
+= render 'form'
+
+.mb-5
+
+%h1.card-title.display-6.text-danger Danger Zone
+.card.border-danger
+  .card-body
+    %p.card-text
+      .row
+        .col
+          %h6 Delete this data source
+          Once you delete a data source, there is no going back. Please be certain.
+        .col-md-auto
+          = link_to 'Delete this data source', @data_source, data: { confirm: "Are you sure?" }, method: :delete, remote: true, class: 'btn btn-light text-danger'

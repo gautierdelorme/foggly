@@ -2,5 +2,4 @@
   %tbody
     - users.each do |user|
       %tr
-        %td.td-link{width: 10}
-          = link_to user.name, user
+        %td= link_to user.name.titleize, user

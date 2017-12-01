@@ -1,0 +1,8 @@
+%nav{role: 'navigation'}
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to t(:index, scope: :data_source), data_sources_path
+    %li.breadcrumb-item.active= t(:new, scope: :data_source)
+
+%h1.display-5= t(:new, scope: :data_source)
+
+= render 'form'

@@ -40,6 +40,14 @@ class UserGroupsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update user_group' do
     patch user_group_url(@user_group), params: { user_group: { description: @user_group.description, name: @user_group.name } }
-    assert_redirected_to user_group_url(@user_group)
+    assert_redirected_to edit_user_group_url(@user_group)
+  end
+
+  test 'should destroy user_group' do
+    assert_difference('UserGroup.count', -1) do
+      delete user_group_url(@user_group)
+    end
+
+    assert_redirected_to user_groups_url
   end
 end

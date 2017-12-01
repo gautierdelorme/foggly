@@ -1,11 +1,13 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{name: 'viewport', content: 'width=device-width'}
+    %meta{name: 'turbolinks-cache-control', content: 'no-cache'}
     %title Foggly
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
+    = stylesheet_link_tag    'application', media: 'all', data: {turbolinks_track: 'reload'}
+    = javascript_include_tag 'application', data: {turbolinks_track: 'reload'}
   %body
     %nav.navbar.navbar-expand-lg.navbar-light.bg-light
       = link_to t(:app_name), root_path, class: 'navbar-brand'
@@ -14,19 +16,21 @@
           %span.navbar-toggler-icon
         .collapse.navbar-collapse#navbarContent
           %ul.navbar-nav.mr-auto
-            %li.nav-item.active
+            = nav_link :conversations do
               = link_to conversations_path, class: 'nav-link' do
                 Mailbox
                 - if Message.unread_by(current_user).length > 0
                   %span.badge.badge-danger
                     = Message.unread_by(current_user).count
-            %li.nav-item.active
+            = nav_link :users do
               = link_to 'Users', users_path, class: 'nav-link'
-            %li.nav-item.active
+            = nav_link :user_groups do
               = link_to 'Groups', user_groups_path, class: 'nav-link'
+            = nav_link :data_sources do
+              = link_to 'Data Sources', data_sources_path, class: 'nav-link'
           = search_form_for @q, class: 'form-inline my-2 my-lg-0' do |f|
             .input-group
-              = f.text_field :name_cont, class: 'form-control', placeholder: 'Search', type: 'search'
+              = f.text_field :name_cont, class: 'form-control', placeholder: 'Search Data', type: 'search'
               %button.input-group-addon= fa_icon :search
           %ul.navbar-nav
             %li.nav-item.dropdown
@@ -35,14 +39,14 @@
                 = link_to 'Profile', edit_user_registration_path, class: 'dropdown-item'
                 .dropdown-divider
                 = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item'
-    .container
+    .container.mb-5
       .flash
-        .alert.alert-success{:class => ('collapse' unless flash[:notice]) }
+        .alert.alert-success{class: ('collapse' unless flash[:notice]) }
           != flash[:notice]
-        .alert.alert-danger{:class => ('collapse' unless flash[:error]) }
+        .alert.alert-danger{class: ('collapse' unless flash[:error]) }
           != flash[:error]
-        .alert.alert-warning{:class => ('collapse' unless flash[:alert]) }
+        .alert.alert-warning{class: ('collapse' unless flash[:alert]) }
           != flash[:alert]
-        .alert.alert-info{:class => ('collapse' unless flash[:info]) }
+        .alert.alert-info{class: ('collapse' unless flash[:info]) }
           != flash[:info]
       = yield

@@ -18,7 +18,7 @@ class ConversationsController < ApplicationController
     elsif @conversation.already_exist?
       redirect_to @conversation.similar
     else
-      redirect_to conversations_path, flash: { error: @conversation.errors.full_messages.to_sentence }
+      redirect_back fallback_location: conversations_url, flash: { error: @conversation.errors.full_messages.to_sentence }
     end
   end
 
