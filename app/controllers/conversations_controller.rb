@@ -2,12 +2,14 @@ class ConversationsController < ApplicationController
   before_action :set_conversation, only: :show
 
   def index
-    @conversations = policy_scope(Conversation).order updated_at: :desc
+    @conversations = policy_scope(Conversation).order(updated_at: :desc).includes(:user, :participant)
   end
 
   def show
     authorize @conversation
-    @conversation.messages.unread_by(current_user).update(read: true)
+    @messages = @conversation.messages.order(created_at: :asc).includes(:user).tap do |messages|
+      messages.unread_by(current_user).update(read: true)
+    end
     @message = Message.new
   end
 

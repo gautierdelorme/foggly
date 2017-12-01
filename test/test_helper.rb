@@ -21,4 +21,14 @@ class ActiveSupport::TestCase
     msg = "User #{user.inspect} should NOT be permitted to #{action} #{record}, but is permitted."
     refute permit(user, record, action), msg
   end
+
+  def before_setup
+    Bullet.start_request
+    super if defined?(super)
+  end
+
+  def after_teardown
+    super if defined?(super)
+    Bullet.end_request
+  end
 end

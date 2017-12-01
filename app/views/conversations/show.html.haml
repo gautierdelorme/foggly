@@ -3,9 +3,9 @@
     %li.breadcrumb-item= link_to 'Mailbox', conversations_path
     %li.breadcrumb-item.active Conversation with #{@conversation.participant_not(current_user).name}
 
-- if @conversation.messages.length > 0
+- if @messages.length > 0
   .col.scrollable
-    - @conversation.messages.order(created_at: :asc).each do |message|
+    - @messages.each do |message|
       = render partial: 'messages/message', locals: { message: message }
 - else
   %p

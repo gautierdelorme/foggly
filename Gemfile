@@ -49,6 +49,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rubocop', '~> 0.51.0', require: false
   gem 'rake', '~> 12.2', require: false
+  gem 'bullet', '~> 5.6'
 end
 
 group :development do
