@@ -9,3 +9,8 @@ two:
   name: user_group_name_two
   description: user_group_description_two
   user: bob
+
+three:
+  name: user_group_name_three
+  description: user_group_description_three
+  user: bob

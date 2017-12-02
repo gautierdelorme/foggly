@@ -20,4 +20,20 @@ class DataSourcePolicyTest < ActiveSupport::TestCase
   test 'cannot destroy not owned user groups' do
     refute_permit @user, data_sources(:two), :destroy?
   end
+
+  test 'can access not restricted data sources' do
+    assert_permit @user, data_sources(:one), :show?
+  end
+
+  test 'cannot access restricted data sources' do
+    refute_permit @user, data_sources(:three), :show?
+  end
+
+  test 'can access restricted data sources if member' do
+    assert_permit @user, data_sources(:two), :show?
+  end
+
+  test 'can access restricted data sources if owned' do
+    assert_permit @user, data_sources(:four), :show?
+  end
 end
