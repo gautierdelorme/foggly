@@ -11,3 +11,15 @@ two:
   description: data_source_description_two
   base_url: data_source_base_url_two
   user: bob
+
+three:
+  name: data_source_name_three
+  description: data_source_description_three
+  base_url: data_source_base_url_three
+  user: bob
+
+four:
+  name: data_source_name_four
+  description: data_source_description_four
+  base_url: data_source_base_url_four
+  user: alice

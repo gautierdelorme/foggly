@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data_source: three
+  user_group: three
+
+two:
+  data_source: four
+  user_group: three
+
+three:
+  data_source: two
+  user_group: two

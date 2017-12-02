@@ -15,6 +15,7 @@ class DataSourcesController < ApplicationController
 
   def edit
     authorize @data_source
+    @user_groups = policy_scope(UserGroup).by_name
   end
 
   def create
@@ -49,6 +50,6 @@ class DataSourcesController < ApplicationController
   end
 
   def data_source_params
-    params.require(:data_source).permit(:name, :description, :base_url).merge(user_id: current_user.id)
+    params.require(:data_source).permit(:name, :description, :base_url, user_group_ids: []).merge(user_id: current_user.id)
   end
 end
