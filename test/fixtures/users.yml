@@ -15,3 +15,8 @@ bob:
 mike:
   email: test@mike.com
   name: mike
+
+admin:
+  email: test@admin.com
+  name: admin
+  role: admin

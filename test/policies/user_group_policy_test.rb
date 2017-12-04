@@ -3,6 +3,7 @@ require 'test_helper'
 class UserGroupPolicyTest < ActiveSupport::TestCase
   setup do
     @user = users(:alice)
+    @admin = users(:admin)
   end
 
   test 'can update owned user groups' do
@@ -35,5 +36,17 @@ class UserGroupPolicyTest < ActiveSupport::TestCase
 
   test 'can access private user groups if owned' do
     assert_permit @user, user_groups(:five), :show?
+  end
+
+  test 'admin can access private user groups' do
+    assert_permit @admin, user_groups(:three), :show?
+  end
+
+  test 'admin can edit private user groups' do
+    assert_permit @admin, user_groups(:three), :update?
+  end
+
+  test 'admin can destroy private user groups' do
+    assert_permit @admin, user_groups(:three), :destroy?
   end
 end

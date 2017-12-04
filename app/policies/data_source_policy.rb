@@ -1,14 +1,15 @@
 class DataSourcePolicy < ApplicationPolicy
   def update?
-    record.user == user
+    user.admin? || record.user == user
   end
 
   def destroy?
-    record.user == user
+    user.admin? || record.user == user
   end
 
   class Scope < Scope
     def resolve
+      return scope if user.admin?
       scope.accessible_by user
     end
   end

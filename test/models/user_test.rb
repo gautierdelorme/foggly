@@ -16,4 +16,9 @@ class UserTest < ActiveSupport::TestCase
   test '#conversations' do
     assert users('alice').conversations == conversations('one', 'three')
   end
+
+  test '#admin?' do
+    assert users(:admin).admin?
+    refute users(:alice).admin?
+  end
 end

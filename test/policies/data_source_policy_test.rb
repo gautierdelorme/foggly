@@ -3,6 +3,7 @@ require 'test_helper'
 class DataSourcePolicyTest < ActiveSupport::TestCase
   setup do
     @user = users(:alice)
+    @admin = users(:admin)
   end
 
   test 'can update owned data sources' do
@@ -35,5 +36,17 @@ class DataSourcePolicyTest < ActiveSupport::TestCase
 
   test 'can access restricted data sources if owned' do
     assert_permit @user, data_sources(:four), :show?
+  end
+
+  test 'admin can access restricted data sources' do
+    assert_permit @admin, data_sources(:three), :show?
+  end
+
+  test 'admin can edit restricted data sources' do
+    assert_permit @admin, data_sources(:three), :update?
+  end
+
+  test 'admin can destroy restricted data sources' do
+    assert_permit @admin, data_sources(:three), :destroy?
   end
 end

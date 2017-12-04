@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  ROLES = %w[member admin].freeze
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -10,11 +12,16 @@ class User < ApplicationRecord
   has_many :data_sources, dependent: :destroy
   has_many :data_endpoints, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, :role, presence: true
+  validates :role, inclusion: { in: ROLES, message: '%{value} is not a valid role' }
 
   scope :by_name, -> { order('lower(name)') }
 
   def conversations
     started_conversations.or(participated_conversations)
+  end
+
+  def admin?
+    role.to_sym == :admin
   end
 end
