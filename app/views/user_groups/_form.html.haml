@@ -7,7 +7,11 @@
           %li= message
 
   .form-group
-    = f.text_field :name, autofocus: true, class: 'form-control form-control-lg', placeholder: 'Name'
+    .row
+      .col
+        = f.text_field :name, autofocus: true, class: 'form-control form-control-lg', placeholder: 'Name'
+      .col-md-auto
+        = f.select :visibility, UserGroup::VISIBILITY_TYPES, {}, class: 'form-control form-control-lg'
   .form-group
     = f.text_area :description, rows: 15, class: 'form-control form-control-lg', placeholder: 'Description'
     %small.form-text.text-muted You can write Markdown in the description.

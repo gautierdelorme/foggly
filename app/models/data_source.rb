@@ -6,11 +6,11 @@ class DataSource < ApplicationRecord
 
   validates :user, :name, :description, presence: true
 
-  scope :by_name, -> { order('lower(name)') }
+  scope :by_name, -> { order(:name) }
   scope :user, ->(user) { left_outer_joins(:data_source_accesses).where(user: user).references(:data_source_accesses) }
   scope :unrestricted, -> { left_outer_joins(:data_source_accesses).where(data_source_accesses: { id: nil }) }
   scope :restricted_but_accessible_by, lambda { |user|
     left_outer_joins(:data_source_accesses).where(data_source_accesses: { user_group: user.user_groups })
   }
-  scope :accessible_by, ->(user) { user(user).or(unrestricted).or(restricted_but_accessible_by(user)) }
+  scope :accessible_by, ->(user) { user(user).or(unrestricted).or(restricted_but_accessible_by(user)).distinct }
 end

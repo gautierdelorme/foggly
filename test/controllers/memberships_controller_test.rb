@@ -23,6 +23,6 @@ class MembershipsControllerTest < ActionDispatch::IntegrationTest
       delete user_group_membership_url(@user_group, @membership)
     end
 
-    assert_redirected_to user_group_url(@user_group)
+    assert_redirected_to user_groups_url
   end
 end

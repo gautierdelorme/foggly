@@ -51,6 +51,6 @@ class UserGroupsController < ApplicationController
   end
 
   def user_group_params
-    params.require(:user_group).permit(:name, :description).merge(user_id: current_user.id)
+    params.require(:user_group).permit(:name, :description, :visibility, user_ids: []).merge(user_id: current_user.id)
   end
 end

@@ -9,8 +9,22 @@ two:
   name: user_group_name_two
   description: user_group_description_two
   user: bob
+  visibility: public
 
 three:
   name: user_group_name_three
   description: user_group_description_three
   user: bob
+  visibility: private
+
+four:
+  name: user_group_name_four
+  description: user_group_description_four
+  user: bob
+  visibility: private
+
+five:
+  name: user_group_name_five
+  description: user_group_description_five
+  user: alice
+  visibility: private
