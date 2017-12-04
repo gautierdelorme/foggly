@@ -18,7 +18,7 @@ class MembershipsController < ApplicationController
 
   def destroy
     Membership.find(params[:id]).destroy
-    redirect_back fallback_location: @user_group, notice: 'Group was successfully left.'
+    redirect_to user_groups_url, notice: 'Group was successfully left.'
   end
 
   private
