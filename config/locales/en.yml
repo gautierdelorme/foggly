@@ -46,6 +46,10 @@ en:
     new: 'New Endpoint'
     show: 'Overview'
     edit: 'Settings'
+  data_request:
+    index: 'Requests'
+    new: 'New Request'
+    show: 'Overview'
   user_group:
     index: 'Groups'
     new: 'New Group'

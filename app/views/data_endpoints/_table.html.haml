@@ -10,4 +10,4 @@
           = link_to data_endpoint.name.titleize, data_source_data_endpoint_path(data_endpoint.data_source, data_endpoint)
         %td
           %span.font-weight-bold.border.border-dark.rounded.p-1.m-1= data_endpoint.method
-          %span.text-muted #{data_endpoint.data_source.base_url}#{data_endpoint.path}
+          %span.text-muted= data_endpoint.url
