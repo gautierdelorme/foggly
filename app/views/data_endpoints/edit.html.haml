@@ -10,19 +10,15 @@
 
 .mb-3
 
-.row
-  .col
-    %h1.display-6= @data_endpoint.name.titleize
-  .col-md-auto
-    .mt-2
-    %span.font-weight-bold.border.border-dark.rounded.p-1.m-1= @data_endpoint.method
-    %span.text-muted #{@data_endpoint.data_source.base_url}#{@data_endpoint.path}
+%h1.display-6= @data_endpoint.name.titleize
 
 .mb-3
 
 .nav.nav-tabs
   %li.nav-item
     = link_to t(:show, scope: :data_endpoint), data_source_data_endpoint_path(@data_source, @data_endpoint), class: 'nav-link'
+  %li.nav-item
+    = link_to t(:index, scope: :data_request), [@data_source, @data_endpoint, :data_requests], class: 'nav-link'
   - if policy(@data_source).update?
     %li.nav-item
       %span.nav-link.active= t(:edit, scope: :data_endpoint)

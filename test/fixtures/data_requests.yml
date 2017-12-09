@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data_endpoint: one
+  user: alice
+  url: 'https://api.coinmarketcap.com/v1/global/'
+  params: {}
+  response: {}
+
+two:
+  data_endpoint: two
+  user: bob
+  url: MyString
+  params: {}
+  response: {}

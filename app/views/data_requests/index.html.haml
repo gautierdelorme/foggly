@@ -1,0 +1,38 @@
+%nav{role: 'navigation'}
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to t(:index, scope: :data_source), :data_sources
+    %li.breadcrumb-item= link_to @data_source.name.titleize, @data_source
+    %li.breadcrumb-item= link_to t(:index, scope: :data_endpoint), [@data_source, :data_endpoints]
+    %li.breadcrumb-item= link_to @data_endpoint.name.titleize, [@data_source, @data_endpoint]
+    %li.breadcrumb-item.active= t(:index, scope: :data_request)
+
+%h1.display-5= @data_source.name.titleize
+
+.mb-3
+
+%h1.display-6= @data_endpoint.name.titleize
+
+.mb-3
+
+.nav.nav-tabs
+  %li.nav-item
+    = link_to t(:show, scope: :data_endpoint), [@data_source, @data_endpoint], class: 'nav-link'
+  %li.nav-item
+    %span.nav-link.active= t(:index, scope: :data_request)
+  - if policy(@data_source).update?
+    %li.nav-item
+      = link_to t(:edit, scope: :data_endpoint), [:edit, @data_source, @data_endpoint], class: 'nav-link'
+
+.mb-3
+
+.row
+  .col
+  .col-md-auto
+    = link_to t(:new, scope: :data_request), [:new, @data_source, @data_endpoint, :data_request], class: 'btn btn-outline-success'
+
+.mb-3
+
+- if @data_requests.length > 0
+  = render partial: 'table', locals: {data_requests: @data_requests}
+- else
+  No requests found...

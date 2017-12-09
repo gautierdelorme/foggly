@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204100524) do
+ActiveRecord::Schema.define(version: 20171206092620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,18 @@ ActiveRecord::Schema.define(version: 20171204100524) do
     t.index ["description"], name: "index_data_endpoints_on_description"
     t.index ["name"], name: "index_data_endpoints_on_name"
     t.index ["user_id"], name: "index_data_endpoints_on_user_id"
+  end
+
+  create_table "data_requests", force: :cascade do |t|
+    t.bigint "data_endpoint_id", null: false
+    t.bigint "user_id", null: false
+    t.string "url", null: false
+    t.json "params", default: {}, null: false
+    t.json "response", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["data_endpoint_id"], name: "index_data_requests_on_data_endpoint_id"
+    t.index ["user_id"], name: "index_data_requests_on_user_id"
   end
 
   create_table "data_source_accesses", force: :cascade do |t|
@@ -117,6 +129,8 @@ ActiveRecord::Schema.define(version: 20171204100524) do
 
   add_foreign_key "data_endpoints", "data_sources"
   add_foreign_key "data_endpoints", "users"
+  add_foreign_key "data_requests", "data_endpoints"
+  add_foreign_key "data_requests", "users"
   add_foreign_key "data_source_accesses", "data_sources"
   add_foreign_key "data_source_accesses", "user_groups"
   add_foreign_key "data_sources", "users"

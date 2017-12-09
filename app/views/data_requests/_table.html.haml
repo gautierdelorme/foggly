@@ -1,0 +1,12 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+      %th Endpoint
+      %th Executed at
+  %tbody
+    - data_requests.each do |data_request|
+      %tr
+        %td= link_to "Request ##{data_request.id}", [data_request.data_endpoint.data_source, data_request.data_endpoint, data_request]
+        %td= data_request.url
+        %td= l data_request.created_at

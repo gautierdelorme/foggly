@@ -1,0 +1,15 @@
+= form_with model: [@data_source, @data_endpoint, @data_request] do |f|
+  - if @data_request.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@data_request.errors.count, "error")} prohibited this data_request from being saved:"
+      %ul
+        - @data_request.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    .input-group
+      %span.input-group-addon= @data_request.method
+      = f.text_field :url, value: @data_endpoint.url, class: 'form-control form-control-lg', placeholder: 'URL', readonly: true
+  .form-group
+    = f.text_area :params, autofocus: true, class: 'form-control form-control-lg', placeholder: 'Params'
+  .form-group
+    = f.submit 'Save', class: 'btn btn-lg btn-light'

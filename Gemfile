@@ -40,6 +40,7 @@ gem 'font-awesome-rails', '~> 4.7'
 gem 'pundit', '~> 1.1'
 gem 'redcarpet', '~> 3.4'
 gem 'turbolinks', '~> 5.0.0'
+gem 'faraday', '~> 0.13'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
