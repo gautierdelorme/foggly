@@ -15,3 +15,11 @@ two:
   path: data_endpoint_path_two
   data_source: two
   user: bob
+
+three:
+  name: data_endpoint_name_three
+  description: data_endpoint_description_three
+  method: GET
+  path: data_endpoint_path_three
+  data_source: three
+  user: bob

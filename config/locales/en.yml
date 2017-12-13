@@ -50,6 +50,8 @@ en:
     index: 'Requests'
     new: 'New Request'
     show: 'Overview'
+  data_request_diff:
+    index: 'Diff with'
   user_group:
     index: 'Groups'
     new: 'New Group'

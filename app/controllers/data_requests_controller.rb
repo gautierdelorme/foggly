@@ -8,7 +8,7 @@ class DataRequestsController < ApplicationController
   end
 
   def show
-    authorize @data_source
+    authorize @data_request
   end
 
   def new

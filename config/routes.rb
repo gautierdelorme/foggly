@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 
   resources :data_sources do
     resources :data_endpoints do
-      resources :data_requests, only: %i[index show create new]
+      resources :data_requests, only: %i[index show create new] do
+        resources :data_request_diffs, only: %i[index show]
+      end
     end
   end
 end

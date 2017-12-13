@@ -4,8 +4,8 @@ one:
   data_endpoint: one
   user: alice
   url: 'https://api.coinmarketcap.com/v1/global/'
-  params: {}
-  response: {}
+  params: {params: 'test one'}
+  response: {response: 'test one'}
 
 two:
   data_endpoint: two
@@ -13,3 +13,17 @@ two:
   url: MyString
   params: {}
   response: {}
+
+three:
+  data_endpoint: three
+  user: bob
+  url: MyString
+  params: {}
+  response: {}
+
+four:
+  data_endpoint: one
+  user: bob
+  url: MyString
+  params: {params: 'test four'}
+  response: {response: 'test four'}

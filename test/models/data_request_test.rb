@@ -26,4 +26,13 @@ class DataRequestTest < ActiveSupport::TestCase
       @data_request.exec!
     end
   end
+
+  test '#content' do
+    assert_equal(
+      @data_request.content,
+      'url' => @data_request.url,
+      'params' => @data_request.params,
+      'response' => @data_request.response
+    )
+  end
 end

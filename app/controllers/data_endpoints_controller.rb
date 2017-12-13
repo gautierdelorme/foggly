@@ -8,20 +8,20 @@ class DataEndpointsController < ApplicationController
   end
 
   def show
-    authorize @data_source
+    authorize @data_endpoint
   end
 
   def new
-    authorize @data_source, :update?
+    authorize @data_source, :show?
     @data_endpoint = @data_source.data_endpoints.new
   end
 
   def edit
-    authorize @data_source
+    authorize @data_endpoint
   end
 
   def create
-    authorize @data_source, :update?
+    authorize @data_source, :show?
     @data_endpoint = @data_source.data_endpoints.new(data_endpoint_params)
 
     if @data_endpoint.save
@@ -32,7 +32,7 @@ class DataEndpointsController < ApplicationController
   end
 
   def update
-    authorize @data_source
+    authorize @data_endpoint
     if @data_endpoint.update(data_endpoint_params)
       redirect_back(
         fallback_location: edit_data_source_data_endpoint_url(@data_source, @data_endpoint),
@@ -44,7 +44,7 @@ class DataEndpointsController < ApplicationController
   end
 
   def destroy
-    authorize @data_source, :update?
+    authorize @data_endpoint
     @data_endpoint.destroy
     redirect_to data_source_data_endpoints_url(@data_source), notice: 'Data endpoint was successfully destroyed.'
   end
