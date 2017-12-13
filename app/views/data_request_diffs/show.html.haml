@@ -5,7 +5,9 @@
     %li.breadcrumb-item= link_to t(:index, scope: :data_endpoint), [@data_source, :data_endpoints]
     %li.breadcrumb-item= link_to @data_endpoint.name.titleize, [@data_source, @data_endpoint]
     %li.breadcrumb-item= link_to t(:index, scope: :data_request), [@data_source, @data_endpoint, :data_requests]
-    %li.breadcrumb-item.active ##{@data_request.id}
+    %li.breadcrumb-item= link_to "##{@data_request.id}", [@data_source, @data_endpoint, @data_request]
+    %li.breadcrumb-item= link_to t(:index, scope: :data_request_diff), [@data_source, @data_endpoint, @data_request, :data_request_diffs]
+    %li.breadcrumb-item.active ##{@data_request_compared.id}
 
 %h1.display-5= @data_source.name.titleize
 
@@ -20,23 +22,14 @@
 
 .mb-3
 
-.nav.nav-tabs
-  %li.nav-item
-    %span.nav-link.active= t(:show, scope: :data_request)
-  %li.nav-item
-    = link_to t(:index, scope: :data_request_diff), [@data_source, @data_endpoint, @data_request, :data_request_diffs], class: 'nav-link'
+%h4
+  Diff between
+  = link_to "##{@data_request.id}", [@data_source, @data_endpoint, @data_request]
+  and
+  = link_to "##{@data_request_compared.id}", [@data_source, @data_endpoint, @data_request_compared]
 
-- if @data_request.params.present?
-  .mb-3
-  %pre
-    %code= JSON.pretty_generate @data_request.params
+.mb-3
 
-- if @data_request.response.present?
-  .mb-3
-  %h4
-    Response
-    %small
-      = link_to [@data_source, @data_endpoint, @data_request, format: :json], download: true do
-        = fa_icon :download
-  %pre.pre-scrollable
-    %code= JSON.pretty_generate @data_request.response
+%pre
+  %code
+    = diff @data_request.content, @data_request_compared.content

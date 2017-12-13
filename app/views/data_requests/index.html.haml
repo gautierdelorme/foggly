@@ -33,6 +33,7 @@
 .mb-3
 
 - if @data_requests.length > 0
-  = render partial: 'table', locals: {data_requests: @data_requests}
+  = render layout: 'table', locals: {data_requests: @data_requests} do |data_request|
+    = link_to "Request ##{data_request.id}", [data_request.data_source, data_request.data_endpoint, data_request]
 - else
   No requests found...
