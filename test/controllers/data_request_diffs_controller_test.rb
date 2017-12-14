@@ -6,34 +6,23 @@ class DataRequestDiffsControllerTest < ActionDispatch::IntegrationTest
   setup do
     sign_in users(:alice)
     @data_request = data_requests(:one)
+    @data_request_compared = data_requests(:four)
     @data_endpoint = @data_request.data_endpoint
     @data_source = @data_endpoint.data_source
   end
 
   test 'should get index' do
-    get url_for([@data_source, @data_endpoint, :data_requests])
+    get url_for [@data_source, @data_endpoint, @data_request, :data_request_diffs]
     assert_response :success
   end
 
-  test 'should get new' do
-    get url_for([:new, @data_source, @data_endpoint, :data_request])
-    assert_response :success
-  end
-
-  test 'should create data_request' do
-    assert_difference('DataRequest.count') do
-      post url_for([@data_source, @data_endpoint, :data_requests]), params: {
-        data_request: {
-          params: @data_request.params, response: @data_request.response, url: @data_request.url
-        }
-      }
-    end
-
-    assert_redirected_to url_for([@data_source, @data_endpoint, DataRequest.last])
-  end
-
-  test 'should show data_request' do
-    get url_for([@data_source, @data_endpoint, @data_request])
+  test 'should show data request diff' do
+    get data_source_data_endpoint_data_request_data_request_diff_path(
+      @data_source,
+      @data_endpoint,
+      @data_request,
+      @data_request_compared
+    )
     assert_response :success
   end
 end

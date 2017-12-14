@@ -1,0 +1,28 @@
+%nav{role: 'navigation'}
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to t(:index, scope: :data_report), data_reports_path
+    %li.breadcrumb-item= link_to @data_report.name.titleize, @data_report
+    %li.breadcrumb-item.active= t(:index, scope: :data_report_request)
+
+.row
+  .col
+    %h1.display-5= @data_report.name.titleize
+  .col-md-auto
+    .mt-2
+      = link_to 'Print', '', class: 'btn btn btn-outline-success print-link'
+
+.nav.nav-tabs
+  %li.nav-item
+    = link_to t(:show, scope: :data_report), @data_report, class: 'nav-link'
+  %li.nav-item
+    %span.nav-link.active= t(:index, scope: :data_report_request)
+  %li.nav-item
+    = link_to t(:edit, scope: :data_report), [:edit, @data_report], class: 'nav-link'
+
+.mb-3
+
+- if @data_requests.length > 0
+  = render layout: 'data_requests/table', locals: {data_requests: @data_requests} do |data_request|
+    = link_to "#{t(:index, scope: :data_report_request)} ##{data_request.id}", data_source_data_endpoint_data_request_data_request_report_path(data_request.data_source, data_request.data_endpoint, data_request, @data_report), method: :put
+- else
+  No requests found...

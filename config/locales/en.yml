@@ -36,6 +36,11 @@ en:
       default: ! '%m/%d/%y %H:%M'
       short: ! '%m/%d/%y'
       detailed: ! '%m/%d/%y %H:%M:%S'
+  data_report:
+    index: 'Reports'
+    new: 'New Report'
+    show: 'Preview'
+    edit: 'Edit'
   data_source:
     index: 'Data Sources'
     new: 'New Data Source'
@@ -51,7 +56,11 @@ en:
     new: 'New Request'
     show: 'Overview'
   data_request_diff:
-    index: 'Diff with'
+    index: 'Compare with'
+  data_request_report:
+    index: 'Add to'
+  data_report_request:
+    index: 'Add Requests'
   user_group:
     index: 'Groups'
     new: 'New Group'

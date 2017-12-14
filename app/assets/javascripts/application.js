@@ -34,3 +34,7 @@ document.addEventListener('ajax:complete',function (event) {
     Turbolinks.visit(referrer, { action: 'restore' })
   }
 }, false)
+
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('print-link')) window.print()
+})

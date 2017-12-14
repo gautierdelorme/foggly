@@ -28,6 +28,8 @@
               = link_to 'Groups', user_groups_path, class: 'nav-link'
             = nav_link :data_sources do
               = link_to 'Data Sources', data_sources_path, class: 'nav-link'
+            = nav_link :data_reports do
+              = link_to 'Reports', data_reports_path, class: 'nav-link'
           = search_form_for @q, class: 'form-inline my-2 my-lg-0' do |f|
             .input-group
               = f.text_field :name_cont, class: 'form-control', placeholder: 'Search Data', type: 'search'

@@ -20,7 +20,12 @@ Rails.application.routes.draw do
     resources :data_endpoints do
       resources :data_requests, only: %i[index show create new] do
         resources :data_request_diffs, only: %i[index show]
+        resources :data_request_reports, only: %i[index update]
       end
     end
+  end
+
+  resources :data_reports do
+    resources :data_report_requests, only: :index
   end
 end

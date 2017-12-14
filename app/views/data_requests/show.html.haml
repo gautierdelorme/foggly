@@ -25,6 +25,8 @@
     %span.nav-link.active= t(:show, scope: :data_request)
   %li.nav-item
     = link_to t(:index, scope: :data_request_diff), [@data_source, @data_endpoint, @data_request, :data_request_diffs], class: 'nav-link'
+  %li.nav-item
+    = link_to t(:index, scope: :data_request_report), [@data_source, @data_endpoint, @data_request, :data_request_reports], class: 'nav-link'
 
 - if @data_request.params.present?
   .mb-3

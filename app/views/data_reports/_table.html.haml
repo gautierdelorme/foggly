@@ -1,0 +1,12 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th Report
+      %th Created by
+      %th Last modified
+  %tbody
+    - data_reports.each do |data_report|
+      %tr
+        %td= yield data_report
+        %td= link_to data_report.user_name, data_report.user
+        %td= l data_report.updated_at

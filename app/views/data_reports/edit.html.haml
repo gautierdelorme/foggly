@@ -1,0 +1,33 @@
+%nav{role: 'navigation'}
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to t(:index, scope: :data_report), data_reports_path
+    %li.breadcrumb-item= link_to @data_report.name.titleize, @data_report
+    %li.breadcrumb-item.active= t(:edit, scope: :data_report)
+
+%h1.display-5
+  = @data_report.name.titleize
+
+.nav.nav-tabs
+  %li.nav-item
+    = link_to t(:show, scope: :data_report), @data_report, class: 'nav-link'
+  %li.nav-item
+    = link_to t(:index, scope: :data_report_request), [@data_report, :data_report_requests], class: 'nav-link'
+  %li.nav-item
+    %span.nav-link.active= t(:edit, scope: :data_report)
+
+.mb-3
+
+= render 'form'
+
+.mb-5
+
+%h1.card-title.display-6.text-danger Danger Zone
+.card.border-danger
+  .card-body
+    %p.card-text
+      .row
+        .col
+          %h6 Delete this report
+          Once you delete a report, there is no going back. Please be certain.
+        .col-md-auto
+          = link_to 'Delete this report', @data_report, data: { confirm: "Are you sure?" }, method: :delete, remote: true, class: 'btn btn-light text-danger'
