@@ -6,7 +6,7 @@
     %li.breadcrumb-item= link_to @data_endpoint.name.titleize, [@data_source, @data_endpoint]
     %li.breadcrumb-item= link_to t(:index, scope: :data_request), [@data_source, @data_endpoint, :data_requests]
     %li.breadcrumb-item= link_to "##{@data_request.id}", [@data_source, @data_endpoint, @data_request]
-    %li.breadcrumb-item.active= t(:index, scope: :data_request_diff)
+    %li.breadcrumb-item.active= t(:index, scope: :data_request_report)
 
 %h1.display-5= @data_source.name.titleize
 
@@ -25,14 +25,14 @@
   %li.nav-item
     = link_to t(:show, scope: :data_request), [@data_source, @data_endpoint, @data_request], class: 'nav-link'
   %li.nav-item
-    %span.nav-link.active= t(:index, scope: :data_request_diff)
+    = link_to t(:index, scope: :data_request_diff), [@data_source, @data_endpoint, @data_request, :data_request_diffs], class: 'nav-link'
   %li.nav-item
-    = link_to t(:index, scope: :data_request_report), [@data_source, @data_endpoint, @data_request, :data_request_reports], class: 'nav-link'
+    %span.nav-link.active= t(:index, scope: :data_request_report)
 
 .mb-3
 
-- if @data_requests.length > 0
-  = render layout: 'data_requests/table', locals: {data_requests: @data_requests} do |data_request_compared|
-    = link_to "#{t(:index, scope: :data_request_diff)} Request ##{data_request_compared.id}", data_source_data_endpoint_data_request_data_request_diff_path(@data_source, @data_endpoint, @data_request, data_request_compared)
+- if @data_reports.length > 0
+  = render layout: 'data_reports/table', locals: {data_reports: @data_reports} do |data_report|
+    = link_to "#{t(:index, scope: :data_request_report)} #{data_report.name}", data_source_data_endpoint_data_request_data_request_report_path(@data_source, @data_endpoint, @data_request, data_report), method: :put
 - else
   No requests found...

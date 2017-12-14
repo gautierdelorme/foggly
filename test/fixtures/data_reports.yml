@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: data_report_name_one
+  body: data_report_body_one
+  user: alice
+
+two:
+  name: data_report_name_two
+  body: data_report_body_two
+  user: bob

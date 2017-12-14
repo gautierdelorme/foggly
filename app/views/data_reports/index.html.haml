@@ -1,0 +1,13 @@
+.row
+  .col
+    %h1.display-4
+      = t(:index, scope: :data_report)
+  .col-md-auto
+    .mt-3
+    = link_to t(:new, scope: :data_report), new_data_report_path, class: 'btn btn-outline-success'
+
+- if @data_reports.length > 0
+  = render layout: 'table', locals: {data_reports: @data_reports} do |data_report|
+    = link_to data_report.name.titleize, data_report
+- else
+  No reports found...

@@ -1,0 +1,15 @@
+= form_with model: @data_report do |f|
+  - if @data_report.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@data_report.errors.count, "error")} prohibited this report from being saved:"
+      %ul
+        - @data_report.errors.full_messages.each do |message|
+          %li= message
+
+  .form-group
+    = f.text_field :name, autofocus: true, class: 'form-control form-control-lg', placeholder: 'Name'
+  .form-group
+    = f.text_area :body, rows: 15, class: 'form-control', placeholder: 'Description'
+    %small.form-text.text-muted You can write Markdown in the body.
+  .form-group
+    = f.submit 'Save', class: 'btn btn-lg btn-light'
