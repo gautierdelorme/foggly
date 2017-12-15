@@ -2,7 +2,7 @@ class UserGroupsController < ApplicationController
   before_action :set_user_group, only: %i[show edit update destroy]
 
   def index
-    @user_groups = policy_scope(UserGroup).by_name
+    @user_groups = policy_scope(UserGroup).by_name.includes(:user)
   end
 
   def show

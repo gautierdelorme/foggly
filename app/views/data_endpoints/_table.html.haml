@@ -3,11 +3,13 @@
     %tr
       %th Name
       %th Endpoint
+      %th Last modified
   %tbody
     - data_endpoints.each do |data_endpoint|
       %tr
         %td
-          = link_to data_endpoint.name.titleize, data_source_data_endpoint_path(data_endpoint.data_source, data_endpoint)
+          = link_to data_endpoint.name.titleize, [data_endpoint.data_source, data_endpoint]
         %td
           %span.font-weight-bold.border.border-dark.rounded.p-1.m-1= data_endpoint.method
           %span.text-muted= data_endpoint.url
+        %td= l data_endpoint.updated_at

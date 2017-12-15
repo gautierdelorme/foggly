@@ -17,4 +17,6 @@ class UserGroup < ApplicationRecord
     left_outer_joins(:memberships).where(memberships: { user_group: user.user_groups })
   }
   scope :accessible_by, ->(user) { user(user).or(public_groups).or(private_but_accessible_by(user)).distinct }
+
+  delegate :name, to: :user, prefix: true
 end

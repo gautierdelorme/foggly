@@ -1,7 +1,7 @@
 class DataEndpoint < ApplicationRecord
   METHOD_TYPES = %w[GET POST].freeze
 
-  belongs_to :data_source
+  belongs_to :data_source, touch: true
   belongs_to :user
   has_many :data_requests, dependent: :destroy
 

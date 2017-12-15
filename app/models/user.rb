@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :data_sources, dependent: :destroy
   has_many :data_endpoints, dependent: :destroy
   has_many :data_requests, dependent: :destroy
+  has_many :data_reports, dependent: :destroy
 
   validates :name, :role, presence: true
   validates :role, inclusion: { in: ROLES, message: '%{value} is not a valid role' }

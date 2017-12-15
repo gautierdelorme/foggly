@@ -1,5 +1,10 @@
 %table.table.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Joined on
   %tbody
     - users.each do |user|
       %tr
         %td= link_to user.name.titleize, user
+        %td= l user.created_at, format: :short

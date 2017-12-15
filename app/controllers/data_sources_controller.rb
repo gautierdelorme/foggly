@@ -2,7 +2,7 @@ class DataSourcesController < ApplicationController
   before_action :set_data_source, only: %i[show edit update destroy]
 
   def index
-    @data_sources = @q.result.by_name
+    @data_sources = @q.result.by_name.includes(:user)
   end
 
   def show

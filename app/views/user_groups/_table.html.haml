@@ -1,5 +1,12 @@
 %table.table.table-striped
+  %thead
+    %tr
+      %th Group
+      %th Created by
+      %th Last modified
   %tbody
     - user_groups.each do |user_group|
       %tr
         %td= link_to user_group.name.titleize, user_group
+        %td= link_to user_group.user_name, user_group.user
+        %td= l user_group.updated_at
