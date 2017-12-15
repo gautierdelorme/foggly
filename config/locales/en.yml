@@ -33,9 +33,9 @@ en:
   app_name: "foggly"
   time:
     formats:
-      default: ! '%m/%d/%y %H:%M'
-      short: ! '%m/%d/%y'
-      detailed: ! '%m/%d/%y %H:%M:%S'
+      default: '%m/%d/%y %H:%M'
+      short: '%m/%d/%y'
+      detailed: '%m/%d/%y %H:%M:%S'
   data_report:
     index: 'Reports'
     new: 'New Report'

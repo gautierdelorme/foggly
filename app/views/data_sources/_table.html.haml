@@ -1,5 +1,12 @@
 %table.table.table-striped
+  %thead
+    %tr
+      %th Data Source
+      %th Created by
+      %th Last modified
   %tbody
     - data_sources.each do |data_source|
       %tr
         %td= link_to data_source.name.titleize, data_source
+        %td= link_to data_source.user_name, data_source.user
+        %td= l data_source.updated_at

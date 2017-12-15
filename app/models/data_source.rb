@@ -13,4 +13,6 @@ class DataSource < ApplicationRecord
     left_outer_joins(:data_source_accesses).where(data_source_accesses: { user_group: user.user_groups })
   }
   scope :accessible_by, ->(user) { user(user).or(unrestricted).or(restricted_but_accessible_by(user)).distinct }
+
+  delegate :name, to: :user, prefix: true
 end
