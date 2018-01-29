@@ -48,7 +48,7 @@
 
 #### Go to the project directory
 
-    git clone git@github.com:fogglyorg/foggly.git
+    git clone git@github.com:gautierdelorme/foggly.git
     cd foggly
 
 #### Install the required version of Ruby
@@ -112,7 +112,7 @@
 
 ### Go to the Github UI and open a Pull Request manually
 
-<https://github.com/fogglyorg/foggly>
+<https://github.com/gautierdelorme/foggly>
 
 
 
